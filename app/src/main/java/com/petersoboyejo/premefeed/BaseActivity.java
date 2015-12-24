@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.petersoboyejo.premefeed.fragments.DropsFragment;
+import com.petersoboyejo.premefeed.fragments.RecentsFragment;
 import com.petersoboyejo.premefeed.fragments.SettingsFragment;
 
 
@@ -39,9 +40,6 @@ public class BaseActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-
 
         // Find our drawer view
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
@@ -53,7 +51,6 @@ public class BaseActivity extends ActionBarActivity {
         dlDrawer.setDrawerListener(drawerToggle);
 
         nvDrawer.getMenu().getItem(0).setChecked(true);
-        setTitle(R.string.app_name);
 
     }
 
@@ -81,6 +78,9 @@ public class BaseActivity extends ActionBarActivity {
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
+                break;
+            case R.id.nav_recents:
+                fragment = new RecentsFragment();
                 break;
             default:
                 fragment = new DropsFragment();
@@ -142,8 +142,6 @@ public class BaseActivity extends ActionBarActivity {
                 return true;
             case R.id.action_feedback:
                 return true;
-
-
         }
         return super.onOptionsItemSelected(item);
     }

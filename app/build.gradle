@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.petersoboyejo.premefeed"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -28,4 +28,8 @@ dependencies {
     compile 'com.parse:parse-android:1.+'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
     compile 'com.github.paolorotolo:appintro:3.2.0'
+    compile 'com.nhaarman.listviewanimations:lib-core:3.1.0@aar'
+    compile 'com.nhaarman.listviewanimations:lib-manipulation:3.1.0@aar'
+    compile 'com.nhaarman.listviewanimations:lib-core-slh:3.1.0@aar'
+
 }

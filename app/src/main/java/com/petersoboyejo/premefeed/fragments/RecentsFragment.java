@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import com.petersoboyejo.premefeed.R;
 
 
-public class SettingsFragment extends Fragment {
+public class RecentsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_recents, container, false);
 
         return rootView;
     }

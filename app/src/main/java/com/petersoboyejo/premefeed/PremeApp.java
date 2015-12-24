@@ -7,8 +7,9 @@ import com.android.volley.toolbox.Volley;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class Application extends android.app.Application {
+public class PremeApp extends android.app.Application {
 
+    private static PremeApp sInstance;
     private RequestQueue mRequestQueue;
 
     @Override
@@ -16,6 +17,7 @@ public class Application extends android.app.Application {
         super.onCreate();
 
         mRequestQueue = Volley.newRequestQueue(this);
+        sInstance = this;
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/lato.ttf")
@@ -29,10 +31,12 @@ public class Application extends android.app.Application {
     }
 
 
+    public synchronized static PremeApp getInstance() {
+        return sInstance;
+    }
+
     public RequestQueue getRequestQueue() {
         return mRequestQueue;
     }
-
-
 
 }
