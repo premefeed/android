@@ -142,7 +142,7 @@ public class BaseActivity extends ActionBarActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.action_logout:
+            case R.id.action_recents:
                 return true;
             case R.id.action_feedback:
                 return true;
