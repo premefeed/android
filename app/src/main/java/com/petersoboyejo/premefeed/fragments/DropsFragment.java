@@ -12,13 +12,10 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.nhaarman.listviewanimations.appearance.simple.SwingLeftInAnimationAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +37,6 @@ public class DropsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         getActivity().setTitle("Drops");
-
     }
 
     @Override
@@ -48,28 +44,21 @@ public class DropsFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_drops, container, false);
 
-
     }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
         mAdapter = new DropsAdapter(getActivity());
-
-        mAdapter = new DropsAdapter(getActivity());
-
-        ListView listView = (ListView) getView().findViewById(R.id.drops_lv);
+        ListView listView = (ListView) getView().findViewById(R.id.lv_drops);
         listView.setAdapter(mAdapter);
-
         fetch();
     }
 
     private void fetch() {
         JsonObjectRequest request = new JsonObjectRequest(
-                ("http://premefeed.herokuapp.com/test"),
+                ("http://premefeed.herokuapp.com/api/v1/items/all"),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -97,8 +86,7 @@ public class DropsFragment extends Fragment {
     private List<DropsRecord> parse(JSONObject json) throws JSONException {
         ArrayList<DropsRecord> records = new ArrayList<DropsRecord>();
 
-        JSONArray jsonData = json.getJSONArray("test");
-        // JSONArray jsonData = new JSONArray(json);
+        JSONArray jsonData = json.getJSONArray("items");
 
         for (int i = 0; i < jsonData.length(); i++) {
 
@@ -115,7 +103,6 @@ public class DropsFragment extends Fragment {
             String description = jsonDrop.getString("description");
             int price = jsonDrop.getInt("price");
             String availability = jsonDrop.getString("availability");
-
 
             DropsRecord record = new DropsRecord(image, images, id, title, style, link, description, price, availability);
             records.add(record);

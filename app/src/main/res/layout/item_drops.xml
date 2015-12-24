@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
 
     <com.android.volley.toolbox.NetworkImageView
@@ -30,7 +31,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Leather with printed monogram, down fill and quilted satin lining. Removable hood with faux fur trim. Full zip closure with snap placket and patch pockets at lower front. "
         android:id="@+id/textView2"
@@ -40,8 +41,8 @@
         android:layout_below="@+id/textView"
         android:layout_alignEnd="@+id/textView"
         android:layout_toEndOf="@+id/imageView2"
-        android:layout_alignBottom="@+id/imageView2"
-        android:textColor="#757575" />
+        android:textColor="#757575"
+        android:layout_above="@+id/share_img" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,5 +85,17 @@
         android:layout_marginLeft="10dp"
         android:layout_alignTop="@+id/browser_img"
         android:layout_toEndOf="@+id/browser_img" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"></FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

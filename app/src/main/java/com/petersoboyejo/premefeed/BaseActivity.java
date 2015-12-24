@@ -32,6 +32,7 @@ public class BaseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, new DropsFragment()).commit();
 
@@ -101,6 +102,9 @@ public class BaseActivity extends ActionBarActivity {
             // error in creating fragment
             Log.e("BaseActivity", "Error in creating fragment");
         }
+
+
+        // Highlight the selected item, update the title, and close the drawer
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         dlDrawer.closeDrawers();

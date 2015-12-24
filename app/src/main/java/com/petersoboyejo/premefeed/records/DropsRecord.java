@@ -1,7 +1,5 @@
 package com.petersoboyejo.premefeed.records;
 
-// image, images, id, title, style, link, description, price, availability
-
 import org.json.JSONArray;
 
 public class DropsRecord {

@@ -24,9 +24,7 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
 
     public DropsAdapter(Context context) {
         super(context, R.layout.item_drops);
-
         mImageLoader = new ImageLoader(PremeApp.getInstance().getRequestQueue(), new BitmapLruCache());
-
     }
 
     @Override
@@ -73,11 +71,11 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
 
     public void swapRecords(List<DropsRecord> objects) {
         clear();
-
         for(DropsRecord object : objects) {
             add(object);
         }
 
         notifyDataSetChanged();
+
     }
 }
