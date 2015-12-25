@@ -9,7 +9,7 @@ public class BitmapLruCache extends LruCache<String, Bitmap>
         implements ImageLoader.ImageCache {
 
     static int getMaxCacheSize() {
-        int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024*5);
         return maxMemory / 8;
     }
 

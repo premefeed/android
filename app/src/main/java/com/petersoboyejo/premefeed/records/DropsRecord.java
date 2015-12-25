@@ -4,7 +4,7 @@ import org.json.JSONArray;
 
 public class DropsRecord {
     private String image;
-    private JSONArray images;
+    private String images;
     private String id;
     private String title;
     private String style;
@@ -13,7 +13,7 @@ public class DropsRecord {
     private int price;
     public String availability;
 
-    public DropsRecord(String image, JSONArray images, String id, String title, String style, String link, String description, int price, String availability) {
+    public DropsRecord(String image, String images, String id, String title, String style, String link, String description, int price, String availability) {
         this.image = image;
         this.images = images;
         this.id = id;
@@ -30,7 +30,7 @@ public class DropsRecord {
         return image;
     }
 
-    public JSONArray getImages() {
+    public String getImages() {
         return images;
     }
 

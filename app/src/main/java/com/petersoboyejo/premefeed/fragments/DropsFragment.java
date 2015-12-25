@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -28,8 +29,10 @@ import com.petersoboyejo.premefeed.records.DropsRecord;
 public class DropsFragment extends Fragment {
 
     private DropsAdapter mAdapter;
+    private ProgressBar progressBar;
 
     public DropsFragment() {
+
     }
 
     @Override
@@ -53,6 +56,12 @@ public class DropsFragment extends Fragment {
         mAdapter = new DropsAdapter(getActivity());
         ListView listView = (ListView) getView().findViewById(R.id.lv_drops);
         listView.setAdapter(mAdapter);
+
+        progressBar = (ProgressBar) getView().findViewById(R.id.progress_bar);
+        progressBar.getIndeterminateDrawable().setColorFilter(0xFFcc0000,
+                android.graphics.PorterDuff.Mode.MULTIPLY);
+        progressBar.setVisibility(View.VISIBLE);
+
         fetch();
     }
 
@@ -65,6 +74,7 @@ public class DropsFragment extends Fragment {
                     public void onResponse(JSONObject jsonObject) {
                         try {
                             List<DropsRecord> dropsRecord = parse(jsonObject);
+                            progressBar.setVisibility(View.INVISIBLE);
                             mAdapter.swapRecords(dropsRecord);
                         } catch (JSONException e) {
                             Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -89,12 +99,12 @@ public class DropsFragment extends Fragment {
         JSONArray jsonData = json.getJSONArray("items");
 
         for (int i = 0; i < jsonData.length(); i++) {
-
             JSONObject jsonDrop = jsonData.getJSONObject(i);
 
             // imgs
             String image = jsonDrop.getString("image");
-            JSONArray images = jsonDrop.getJSONArray("images");
+            JSONArray imgs = jsonDrop.getJSONArray("images");
+            String images = imgs.toString();
 
             String id = jsonDrop.getString("id");
             String title = jsonDrop.getString("title");

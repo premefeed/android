@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#ffffff">
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Supreme®/Schott® Shearling Hooded Coat"
+        android:id="@+id/textView5"
+        android:layout_weight="0.12"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Leather with printed monogram, down fill and quilted satin lining. Removable hood with faux fur trim. Full zip closure with snap placket and patch pockets at lower front. "
+        android:typeface="monospace"
+        android:id="@+id/textView6"
+        android:layout_weight="0.05"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="$1198"
+        android:id="@+id/textView7"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:typeface="monospace"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="28dp" />
+
+    <Button
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:text="OPEN IN BROWSER"
+        android:typeface="monospace"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:text="ONE CLICK PURCHASE"
+        android:typeface="monospace"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>
