@@ -1,5 +1,7 @@
 package com.petersoboyejo.premefeed.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.daimajia.slider.library.Transformers.ZoomOutTransformer;
 import com.petersoboyejo.premefeed.R;
 
 import org.json.JSONArray;
@@ -40,7 +44,7 @@ public class ItemFragment extends Fragment implements BaseSliderView.OnSliderCli
         String id = extras.getString("id");
         String title = extras.getString("title");
         String style = extras.getString("style");
-        String link = extras.getString("link");
+        final String link = extras.getString("link");
         String description = extras.getString("description");
         int price = extras.getInt("price");
         String availability = extras.getString("availability");
@@ -57,6 +61,7 @@ public class ItemFragment extends Fragment implements BaseSliderView.OnSliderCli
         mSlider.setPresetTransformer(SliderLayout.Transformer.Stack);
         mSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mSlider.setCustomAnimation(new DescriptionAnimation());
+        mSlider.setPresetTransformer(SliderLayout.Transformer.ZoomOut);
         mSlider.setDuration(5000);
         for(int i=0;i<images.length();i++){
 
@@ -74,13 +79,26 @@ public class ItemFragment extends Fragment implements BaseSliderView.OnSliderCli
                 e.printStackTrace();
             }
 
-
         }
 
 
         TextView title_TV = (TextView) rootView.findViewById(R.id.textView5);
         TextView description_TV = (TextView) rootView.findViewById(R.id.textView6);
         TextView price_TV = (TextView) rootView.findViewById(R.id.textView7);
+
+        Button goToBrowser = (Button) rootView.findViewById(R.id.button);
+
+        goToBrowser.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(link));
+                startActivity(i);
+            }
+
+        });
 
         title_TV.setText(title);
         description_TV.setText(description);

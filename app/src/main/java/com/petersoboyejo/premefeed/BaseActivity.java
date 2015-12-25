@@ -1,6 +1,8 @@
 package com.petersoboyejo.premefeed;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -77,15 +79,22 @@ public class BaseActivity extends ActionBarActivity {
             case R.id.nav_drops:
                 fragment = new DropsFragment();
                 break;
-            case R.id.nav_settings:
-                fragment = new SettingsFragment();
-                break;
             case R.id.nav_recents:
                 fragment = new RecentsFragment();
+                break;
+            case R.id.nav_donate:
+                fragment = new RecentsFragment();
+                break;
+            case R.id.nav_settings:
+                String link = "http://premefeed.com/donate";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(link));
+                startActivity(i);
                 break;
             default:
                 fragment = new DropsFragment();
         }
+
 
 
         if (fragment != null) {

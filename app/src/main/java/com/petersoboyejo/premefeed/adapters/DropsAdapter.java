@@ -109,7 +109,7 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
                 mFrag.setArguments(data);
                 ft.replace(R.id.flContent, mFrag);
                 ft.commit();
-                
+
 
             }
         });
