@@ -78,13 +78,16 @@ public class DropsFragment extends Fragment {
                             mAdapter.swapRecords(dropsRecord);
                         } catch (JSONException e) {
                             Toast.makeText(getActivity(), "Unable to parse data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            // TODO: Set view container to say so
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
+
                         Toast.makeText(getActivity(), "Unable to fetch data: " + volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+                        // TODO: Set view container to say so
                     }
                 });
         PremeApp.getInstance().getRequestQueue().add(request);

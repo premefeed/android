@@ -17,6 +17,8 @@ public class SplashActivity extends AppCompatActivity {
         Intent i = new Intent(this, BaseActivity.class);
         startActivity(i);
 
+        // TODO: No COnnection Intent
+
         new Handler().postDelayed(new Runnable() {
 
             @Override

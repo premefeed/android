@@ -1,9 +1,12 @@
 package com.petersoboyejo.premefeed.adapters;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -86,6 +90,48 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
         } else if (dropsRecord.getAvailability() == "Sold Out") {
             availability.setTextColor(Color.parseColor("#F44336"));
         }
+
+        ImageView goToBrowser = (ImageView) convertView.findViewById(R.id.browser_img);
+        goToBrowser.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Are you sure you want to open up your browser?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+                                i.setData(Uri.parse(dropsRecord.getLink()));
+                                getContext().startActivity(i);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .show();
+
+            }
+
+        });
+
+        ImageView shareButton = (ImageView) convertView.findViewById(R.id.share_img);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Check Out the " + dropsRecord.getTitle() + " on " + dropsRecord.getLink();
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, dropsRecord.getTitle());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                getContext().startActivity(Intent.createChooser(sharingIntent, "Share via"));
+            }
+
+        });
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,7 +6,9 @@ import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.petersoboyejo.premefeed.fragments.DropsFragment;
+import com.petersoboyejo.premefeed.fragments.ItemFragment;
 import com.petersoboyejo.premefeed.fragments.RecentsFragment;
 import com.petersoboyejo.premefeed.fragments.SettingsFragment;
 
@@ -83,7 +86,7 @@ public class BaseActivity extends ActionBarActivity {
                 fragment = new RecentsFragment();
                 break;
             case R.id.nav_donate:
-                String link = "http://premefeed.com/donate";
+                String link = "http://premefeed.herokuapp.com/donate";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(link));
                 startActivity(i);
@@ -152,6 +155,11 @@ public class BaseActivity extends ActionBarActivity {
         switch (item.getItemId()) {
 
             case R.id.action_recents:
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.slide_in_top, R.anim.slide_out_top);
+                Fragment mFrag = new RecentsFragment();
+                ft.replace(R.id.flContent, mFrag);
+                ft.commit();
                 return true;
             case R.id.action_feedback:
                 return true;

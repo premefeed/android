@@ -1,5 +1,7 @@
 package com.petersoboyejo.premefeed.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -93,12 +95,46 @@ public class ItemFragment extends Fragment implements BaseSliderView.OnSliderCli
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(link));
-                startActivity(i);
+
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Are you sure you want to open up your browser?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+                                i.setData(Uri.parse(link));
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .show();
+
             }
 
         });
+
+        Button onClickPurchase = (Button) rootView.findViewById(R.id.button2);
+        onClickPurchase.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(getContext())
+                        .setTitle("¯\\_(ツ)_/¯")
+                        .setMessage("This feature is quite not ready...")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                            }
+                        })
+                        .show();
+            }
+
+        });
+
 
         title_TV.setText(title);
         description_TV.setText(description);
