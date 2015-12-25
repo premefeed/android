@@ -1,5 +1,7 @@
 package com.petersoboyejo.premefeed;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -86,10 +88,7 @@ public class BaseActivity extends ActionBarActivity {
                 fragment = new RecentsFragment();
                 break;
             case R.id.nav_donate:
-                String link = "http://premefeed.herokuapp.com/donate";
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(link));
-                startActivity(i);
+                goToDonatePage();
                 break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
@@ -165,6 +164,27 @@ public class BaseActivity extends ActionBarActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToDonatePage() {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Are you sure you want to open up your browser?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String link = "http://premefeed.herokuapp.com/donate";
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(link));
+                        startActivity(i);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .show();
+
     }
 
 
