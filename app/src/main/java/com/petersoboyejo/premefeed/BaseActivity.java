@@ -83,13 +83,13 @@ public class BaseActivity extends ActionBarActivity {
                 fragment = new RecentsFragment();
                 break;
             case R.id.nav_donate:
-                fragment = new RecentsFragment();
-                break;
-            case R.id.nav_settings:
                 String link = "http://premefeed.com/donate";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(link));
                 startActivity(i);
+                break;
+            case R.id.nav_settings:
+                fragment = new SettingsFragment();
                 break;
             default:
                 fragment = new DropsFragment();
