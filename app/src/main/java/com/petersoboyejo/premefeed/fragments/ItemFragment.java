@@ -51,7 +51,6 @@ public class ItemFragment extends Fragment implements BaseSliderView.OnSliderCli
         int price = extras.getInt("price");
         String availability = extras.getString("availability");
 
-
         JSONArray imagesArray = null;
         try {
             imagesArray = new JSONArray(images);

@@ -1,6 +1,7 @@
 package com.petersoboyejo.premefeed;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -20,8 +21,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.petersoboyejo.premefeed.fragments.DropsFragment;
 import com.petersoboyejo.premefeed.fragments.ItemFragment;
 import com.petersoboyejo.premefeed.fragments.RecentsFragment;
@@ -185,6 +191,13 @@ public class BaseActivity extends ActionBarActivity {
                 })
                 .show();
 
+    }
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.actions, popup.getMenu());
+        popup.show();
     }
 
 

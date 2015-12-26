@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,8 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
     private FragmentManager mFragmentManager;
     private Context context;
 
+
+
     public DropsAdapter(Context context) {
         super(context, R.layout.item_drops);
         this.context = context;
@@ -52,11 +56,10 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
         }
 
 
-        ImageView browserImg = (ImageView)convertView.findViewById(R.id.browser_img);
-        ImageView shareImg = (ImageView)convertView.findViewById(R.id.share_img);
+
         int color = Color.parseColor("#757575");
-        browserImg.setColorFilter(color);
-        shareImg.setColorFilter(color);
+        // browserImg.setColorFilter(color);
+        // shareImg.setColorFilter(color);
 
 
 
@@ -91,6 +94,7 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
             availability.setTextColor(Color.parseColor("#F44336"));
         }
 
+        /*
         ImageView goToBrowser = (ImageView) convertView.findViewById(R.id.browser_img);
         goToBrowser.setOnClickListener(new View.OnClickListener() {
 
@@ -132,6 +136,8 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
 
         });
 
+        */
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +169,6 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
         return convertView;
     }
 
-
     public void swapRecords(List<DropsRecord> objects) {
         clear();
         for(DropsRecord object : objects) {
@@ -173,5 +178,6 @@ public class DropsAdapter extends ArrayAdapter<DropsRecord> {
         notifyDataSetChanged();
 
     }
+
 
 }
