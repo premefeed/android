@@ -40,6 +40,7 @@ public class BaseActivity extends ActionBarActivity {
     NavigationView nvDrawer;
     DrawerLayout dlDrawer;
     ActionBarDrawerToggle drawerToggle;
+    static final String DONATE_LINK = "http://premefeed.herokuapp.com/donate";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,7 +179,7 @@ public class BaseActivity extends ActionBarActivity {
                 .setTitle("Are you sure you want to open up your browser?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        String link = "http://premefeed.herokuapp.com/donate";
+                        String link = DONATE_LINK;
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(link));
                         startActivity(i);
